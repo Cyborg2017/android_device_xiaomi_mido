@@ -33,7 +33,7 @@ export DEVICE_BRINGUP_YEAR=2020
 ./../../$VENDOR/$DEVICE_COMMON/extract-files.sh $@
 # Hex for goodix fingerprint
 DEVICE_BLOB_ROOT="$MK_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
-
+patchelf --replace-needed libbinder.so libbindergx.so "$DEVICE_BLOB_ROOT"/vendor/bin/hw/android.hardware.biometrics.fingerprint@2.1-service.xiaomi_mido
 patchelf --replace-needed libbinder.so libbindergx.so "$DEVICE_BLOB_ROOT"/vendor/bin/gx_fpd
 patchelf --replace-needed libbinder.so libbindergx.so "$DEVICE_BLOB_ROOT"/vendor/lib64/hw/fingerprint.goodix.so
 patchelf --replace-needed libbinder.so libbindergx.so "$DEVICE_BLOB_ROOT"/vendor/lib64/libfp_client.so
